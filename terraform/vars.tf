@@ -40,7 +40,7 @@ variable "scheduler" {
   default = "funland-etl-schedule"  
 }
 
-variable "notification_email" {
+variable "EMAIL" {
   description = "Email address to receive Lambda failure notifications"
   type        = string
 }
@@ -50,10 +50,10 @@ variable "aws_region" {
   default = "eu-west-2"
 }
 
-  
+# ------------------------------
 
 variable "TOTESYS_HOST" {
-   default = "nc-data-eng-totesys-production.chpsczt8h1nu.eu-west-2.rds.amazonaws.com"
+  type=string
 }
 
 variable "TOTESYS_PORT" {
@@ -71,5 +71,29 @@ variable "TOTESYS_USER" {
 }
 
 variable "TOTESYS_PASSWORD" {
+  type=string
+}
+
+# -------------------------
+
+variable "DATA_WAREHOUSE_HOST" {
+  type=string
+}
+
+variable "DATA_WAREHOUSE_PORT" {
+  type=number
+}
+
+variable "DATA_WAREHOUSE_DATABASE" {
+  description = "Totesys DB name"
+  type=string
+}
+
+variable "DATA_WAREHOUSE_USER" {
+  description = "Totesys DB user"
+  type=string
+}
+
+variable "DATA_WAREHOUSE_PASSWORD" {
   type=string
 }

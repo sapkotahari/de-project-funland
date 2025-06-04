@@ -1,10 +1,32 @@
 name: Secrets workflow 
 
+env:
+  TF_VAR_TOTESYS_HOST: ${{ secrets.TOTESYS_HOST }}
+  TF_VAR_TOTESYS_PORT: ${{ secrets.TOTESYS_PORT }}
+  TF_VAR_TOTESYS_DATABASE: ${{ secrets.TOTESYS_DATABASE }}
+  TF_VAR_TOTESYS_USER: ${{ secrets.TOTESYS_DB_USER }}
+  TF_VAR_TOTESYS_PASSWORD: ${{ secrets.TOTESYS_PASSWORD }}
+
+  TF_VAR_DATA_WAREHOUSE_HOST: ${{ secrets.DATA_WAREHOUSE_HOST }}
+  TF_VAR_DATA_WAREHOUSE_PORT: ${{ secrets.DATA_WAREHOUSE_PORT }}
+  TF_VAR_DATA_WAREHOUSE_DATABASE: ${{ secrets.DATA_WAREHOUSE_DATABASE }}
+  TF_VAR_DATA_WAREHOUSE_USER: ${{ secrets.DATA_WAREHOUSE_USER }}
+  TF_VAR_DATA_WAREHOUSE_PASSWORD: ${{ secrets.DATA_WAREHOUSE_PASSWORD }}
+
+  TF_VAR_EMAIL: ${{ secrets.EMAIL }}  
+
 on: 
   push: 
     branches:
       - main
-  pull-request:
+  pull_request:
+  
+  workflow_dispatch:
+    inputs:
+        environment:
+            type: string
+            default: dev
+            required: false
 
 jobs:
   run-tests: 
@@ -25,6 +47,7 @@ jobs:
       run:
         make requirements
     - name: Run full code quality, test and coverage checks
+      run:
         make run-checks
     - name: Archive coverage report
       uses: actions/upload-artifact@v4
