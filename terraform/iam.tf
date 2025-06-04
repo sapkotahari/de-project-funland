@@ -42,7 +42,7 @@ data "aws_iam_policy_document" "s3_data_policy_doc" {
   }
 }
 
-# Create S3 policy
+#Create S3 policy
 resource "aws_iam_policy" "s3_write_policy" {
   name_prefix = "s3-policy-lambda-write"
   policy      = data.aws_iam_policy_document.s3_data_policy_doc.json 
@@ -128,7 +128,7 @@ resource "aws_iam_role_policy_attachment" "ssm_lambda_policy_attachment" {
 # IAM policy for lambda to get credentials | secrets from Secret Manager
 #-----------------------------
 
-# Define Iam role for Secret Manager
+# Define iam policy document for Secret Manager
 data "aws_iam_policy_document" "secretsmanager_lambda_policy_document" {
   statement { 
     effect = "Allow"
@@ -313,4 +313,5 @@ resource "aws_iam_role_policy_attachment" "scheduler_policy_attachment" {
   role       = aws_iam_role.scheduler_role.name
   policy_arn = aws_iam_policy.scheduler_policy.arn
 }
+
 

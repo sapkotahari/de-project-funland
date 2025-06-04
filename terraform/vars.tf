@@ -49,3 +49,27 @@ variable "aws_region" {
   type    = string
   default = "eu-west-2"
 }
+
+  
+
+variable "TOTESYS_HOST" {
+   default = "nc-data-eng-totesys-production.chpsczt8h1nu.eu-west-2.rds.amazonaws.com"
+}
+
+variable "TOTESYS_PORT" {
+  type=number
+}
+
+variable "TOTESYS_DATABASE" {
+  description = "Totesys DB name"
+  type=string
+}
+
+variable "TOTESYS_USER" {
+  description = "Totesys DB user"
+  type=string
+}
+
+variable "TOTESYS_PASSWORD" {
+  type=string
+}
