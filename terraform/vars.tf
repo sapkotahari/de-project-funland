@@ -85,12 +85,12 @@ variable "DATA_WAREHOUSE_PORT" {
 }
 
 variable "DATA_WAREHOUSE_DATABASE" {
-  description = "Totesys DB name"
+  description = "Warehouse DB name"
   type=string
 }
 
 variable "DATA_WAREHOUSE_USER" {
-  description = "Totesys DB user"
+  description = "Warehouse DB user"
   type=string
 }
 

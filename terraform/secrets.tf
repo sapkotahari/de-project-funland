@@ -27,12 +27,12 @@ resource "aws_secretsmanager_secret" "warehouse_secrets" {
 resource "aws_secretsmanager_secret_version" "warehouse_db_secret_version" {
   secret_id     = aws_secretsmanager_secret.warehouse_secrets.id
   secret_string = jsonencode({
-    totesys_user = var.DATA_WAREHOUSE_USER
-    totesys_password = var.DATA_WAREHOUSE_PASSWORD
-    totesys_database = var.DATA_WAREHOUSE_DATABASE
-    totesys_host = var.DATA_WAREHOUSE_HOST
-    totesys_port= var.DATA_WAREHOUSE_PORT
-    })
+    warehouse_user = var.DATA_WAREHOUSE_USER
+    warehouse_password = var.DATA_WAREHOUSE_PASSWORD
+    warehouse_database = var.DATA_WAREHOUSE_DATABASE
+    warehouse_host = var.DATA_WAREHOUSE_HOST
+    warehouse_port= var.DATA_WAREHOUSE_PORT
+  })
 }
 
 data "aws_secretsmanager_secret_version" "warehouse_db_secret_data" {
